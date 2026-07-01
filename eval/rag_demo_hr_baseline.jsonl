@@ -1,0 +1,5 @@
+{"crop_id": "demo_hr", "question": "Сколько дней оплачиваемого отпуска положено сотруднику?", "expect_contains": ["28"], "expect_context": true, "category": "policy"}
+{"crop_id": "demo_hr", "question": "Как оформить больничный лист?", "expect_contains": ["больничн", "3"], "expect_context": true, "category": "policy"}
+{"crop_id": "demo_hr", "question": "Можно ли работать удалённо два дня в неделю?", "expect_contains": ["удалён", "вторник", "четверг"], "expect_context": true, "category": "policy"}
+{"crop_id": "demo_hr", "question": "Куда писать при конфликте с руководителем?", "expect_contains": ["hr@", "конфликт"], "expect_context": true, "category": "policy"}
+{"crop_id": "demo_hr", "question": "Какой срок испытательный для директора по маркетингу на Марсе?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}

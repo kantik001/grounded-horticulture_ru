@@ -1,0 +1,41 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY cv/requirements.txt cv/requirements-docker.txt .
+# CPU-only PyTorch (без CUDA): сначала torch с официального CPU index, затем остальное.
+RUN pip install --no-cache-dir \
+        torch==2.5.1 torchvision==0.20.1 \
+        --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r requirements-docker.txt
+
+# Предзагрузка e5 + reranker в слой образа (без сети при старте контейнера).
+COPY rag/ rag/
+COPY scripts/download_hf_models.py scripts/download_hf_models.py
+
+ARG HF_TOKEN=
+ARG SKIP_HF_BAKE=0
+ENV HF_HOME=/app/hf_cache
+ENV HF_TOKEN=${HF_TOKEN}
+ENV TORCH_CUDA_ARCH_LIST=
+ENV CUDA_VISIBLE_DEVICES=
+
+RUN if [ "$SKIP_HF_BAKE" != "1" ]; then python scripts/download_hf_models.py; fi
+
+COPY api/ api/
+COPY cv/ cv/
+COPY scripts/ scripts/
+
+ENV MODEL_PATH="models/apple_classifier.pth"
+ENV CLASSIFIER_PORT=5000
+ENV PYTHONUTF8=1
+ENV PYTHONIOENCODING=utf-8
+
+EXPOSE 5000
+
+CMD ["gunicorn", "-c", "api/gunicorn.conf.py", "api.app:app"]

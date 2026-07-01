@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Помощник Садовода — чат</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <header class="chat-header">
+        <h1 id="headerTitle">🍏 Помощник Садовода</h1>
+        <p id="headerSubtitle">Текст — ответ по статьям (RAG). Фото — классификация и советы.</p>
+        <label class="crop-row">
+            <span id="cropLabel">Культура</span>
+            <select id="cropSelect" aria-label="Выбор культуры"></select>
+        </label>
+        <p class="disclaimer" id="headerDisclaimer">Справочная информация. Не заменяет очный осмотр агронома. Решения по препаратам — с учётом инструкций и законодательства.</p>
+    </header>
+
+    <div class="onboarding" id="onboardingRoot" hidden>
+        <div class="onboarding-title" id="onboardingTitle">Примеры вопросов</div>
+        <div class="onboarding-chips" id="onboardingChips"></div>
+    </div>
+
+    <div class="chat-scroll" id="chatScroll" aria-live="polite">
+        <div class="day-divider" id="chatDivider">Диалог с агрономом</div>
+        <div id="messagesRoot"></div>
+    </div>
+
+    <div class="typing" id="typingLine">Ассистент печатает…</div>
+
+    <div class="composer-wrap">
+        <div class="attachment-strip" id="attachmentStrip" aria-hidden="true">
+            <img id="attachmentThumb" alt="">
+            <span id="attachmentLabel">Фото к сообщению</span>
+            <button type="button" class="clear" id="clearAttachment">Убрать</button>
+        </div>
+        <p class="photo-beta-notice" id="photoBetaNotice" hidden></p>
+        <div class="composer">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <button type="button" class="icon-btn" id="attachBtn" title="Прикрепить фото (бета)" aria-label="Прикрепить фото (бета)">📎</button>
+            <textarea id="inputText" rows="1" maxlength="4000" placeholder="Сообщение…" aria-label="Текст сообщения"></textarea>
+            <button type="button" class="send-btn" id="sendBtn" title="Отправить" aria-label="Отправить">➤</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <div class="web-login-overlay" id="webLoginOverlay" hidden>
+        <div class="web-login-card" role="dialog" aria-labelledby="webLoginTitle">
+            <h2 id="webLoginTitle">Sign in</h2>
+            <p id="webLoginHint">Enter your access key to use the assistant in the browser.</p>
+            <input type="password" id="webLoginKey" class="web-login-input" autocomplete="off" placeholder="Access key">
+            <button type="button" class="web-login-btn" id="webLoginSubmit">Continue</button>
+            <p class="web-login-note" id="webLoginNote">Telegram users: open the app from the bot.</p>
+            <p class="web-login-error" id="webLoginError" hidden></p>
+        </div>
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

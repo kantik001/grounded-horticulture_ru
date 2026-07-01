@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "description": "Shared contract cases for rag verify (Go verifyRAGAnswer and Python verify_answer).",
+  "cases": [
+    {
+      "id": "pass_no_numbers",
+      "fragments": [{"content": "Парша проявляется пятнами на листьях."}],
+      "answer": "Парша проявляется пятнами на листьях.",
+      "expect_pass": true
+    },
+    {
+      "id": "pass_number_in_context",
+      "fragments": [{"content": "Среднее значение 77 и повторность 3-72."}],
+      "answer": "Среднее 77.",
+      "expect_pass": true
+    },
+    {
+      "id": "pass_decimal_comma",
+      "fragments": [{"content": "Масса плодов 304,7 кг на дерево."}],
+      "answer": "Масса 304,7 кг.",
+      "expect_pass": true
+    },
+    {
+      "id": "fail_hallucinated_number",
+      "fragments": [{"content": "Без цифр в тексте."}],
+      "answer": "Рентабельность 72%.",
+      "expect_pass": false,
+      "expect_reason_substr": "72"
+    },
+    {
+      "id": "pass_with_disclaimer_stripped",
+      "fragments": [{"content": "Норма 50 г/л."}],
+      "answer": "Норма 50 г/л.\n\nСправочная информация из базы знаний. Не заменяет очный осмотр агронома; решения по препаратам — с учётом инструкций и законодательства.",
+      "expect_pass": true
+    },
+    {
+      "id": "pass_strips_source_line",
+      "fragments": [{"content": "Урожайность 120 ц/га."}],
+      "answer": "Урожайность 120 ц/га.\n\nИсточник: \"Журнал\"",
+      "expect_pass": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "key": "replace-with-long-random-secret",
+    "label": "browser-demo",
+    "roles": ["chat_only"]
+  }
+]

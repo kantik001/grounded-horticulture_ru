@@ -1,0 +1,14 @@
+{
+  "apple": [
+    "healthy_apple",
+    "apple_scab",
+    "black_rot",
+    "cedar_apple_rust",
+    "healthy_leaf",
+    "powdery_mildew",
+    "fire_blight",
+    "bitter_rot",
+    "blue_mold",
+    "brown_rot"
+  ]
+}

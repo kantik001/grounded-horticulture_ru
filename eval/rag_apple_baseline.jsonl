@@ -1,0 +1,45 @@
+{"crop_id": "apple", "question": "Какие подвои яблони серии СК подходят для юга России?", "expect_contains": ["подво"], "category": "rootstock"}
+{"crop_id": "apple", "question": "Что даёт высокая окулировка саженца на высоте 40 см?", "expect_contains": ["окулиров"], "category": "rootstock"}
+{"crop_id": "apple", "question": "Чем книп-баум отличается от обычной однолетки?", "expect_contains": ["книп"], "category": "nursery"}
+{"crop_id": "apple", "question": "Какая схема при высокой плотности посадки на М9?", "expect_contains": ["м9"], "category": "planting"}
+{"crop_id": "apple", "question": "Как глубина посадки влияет на урожай яблони на подвое СК?", "expect_contains": ["глубин"], "category": "planting"}
+{"crop_id": "apple", "question": "Как экспозиция склона влияет на яблоню на террасах в КБР?", "expect_contains": ["склон"], "category": "relief"}
+{"crop_id": "apple", "question": "Какие земли КБР пригодны для яблони по ГИС-оценке?", "expect_contains": ["кбр"], "category": "relief"}
+{"crop_id": "apple", "question": "Чем опасны уплотнённые слои почвы в предгорье?", "expect_contains": ["уплотн"], "category": "soil"}
+{"crop_id": "apple", "question": "Как увлажнённость сезона влияет на урожай яблони в предгорье?", "expect_contains": ["влаж"], "category": "relief"}
+{"crop_id": "apple", "question": "Что такое фертигация в интенсивном саду яблони?", "expect_contains": ["фертигац"], "category": "fertilizer"}
+{"crop_id": "apple", "question": "Зачем некорневые биостимуляторы на основе аминокислот?", "expect_contains": ["биостимул"], "category": "fertilizer"}
+{"crop_id": "apple", "question": "Как листовые калий и кальций влияют на лёжкость плодов?", "expect_contains": ["кальц"], "category": "fertilizer"}
+{"crop_id": "apple", "question": "Как удобрения влияют на колонновидную яблоню?", "expect_contains": ["колонновид"], "category": "fertilizer"}
+{"crop_id": "apple", "question": "Зачем капельный полив яблони в засуху?", "expect_contains": ["полив"], "category": "care"}
+{"crop_id": "apple", "question": "Зачем нормировать завязь у молодых деревьев яблони?", "expect_contains": ["нормиров"], "category": "care"}
+{"crop_id": "apple", "question": "Какие сорта яблони устойчивы к весенней гипотермии?", "expect_contains": ["либерти"], "category": "variety"}
+{"crop_id": "apple", "question": "Как осветление кроны на склоне влияет на урожай?", "expect_contains": ["крон"], "category": "care"}
+{"crop_id": "apple", "question": "Какой pH почвы оптимален для яблони?", "expect_contains": ["6"], "category": "soil"}
+{"crop_id": "apple", "question": "Что известно о марссониозе яблони на юге?", "expect_contains_any": ["марссон", "марссониоз", "marssonina"], "category": "disease"}
+{"crop_id": "apple", "question": "Как контролировать яблонную плодожорку?", "expect_contains": ["плодожорк"], "category": "pest"}
+{"crop_id": "apple", "question": "Почему нельзя опираться только на старые схемы защиты от парши?", "expect_contains": ["парш"], "category": "disease"}
+{"crop_id": "apple", "question": "Какие сорта яблони используют как опылители?", "expect_contains": ["опыл"], "category": "variety"}
+{"crop_id": "apple", "question": "Как управляют качеством плодов при хранении и переработке?", "expect_contains": ["хранен"], "category": "quality"}
+{"crop_id": "apple", "question": "Что такое русское веретено для сортов Орфей и Марго?", "expect_contains": ["веретено"], "category": "care"}
+{"crop_id": "apple", "question": "Какие подвои дают скороплодность сорту Либерти?", "expect_contains": ["либерти"], "category": "rootstock"}
+{"crop_id": "apple", "question": "Как сложный рельеф Краснодарского края влияет на продуктивность сада?", "expect_contains": ["рельеф"], "category": "relief"}
+{"crop_id": "apple", "question": "Зачем нужны зимостойкие подвои при изменении климата?", "expect_contains": ["зимостойк"], "category": "rootstock"}
+{"crop_id": "apple", "question": "Чем мульчирование измельчённой обрезью в междурядье полезно?", "expect_contains": ["мульч"], "category": "soil"}
+{"crop_id": "apple", "question": "Как выращивать ананас на Марсе в открытом грунте?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}
+{"crop_id": "apple", "question": "Курс доллара на завтра для садовода?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}
+{"crop_id": "apple", "question": "Какие сорта яблони показали максимальную рентабельность на склоне?", "expect_contains": ["рентабельн"], "category": "relief"}
+{"crop_id": "apple", "question": "Какие признаки парши на листьях яблони?", "expect_contains": ["парша"], "category": "disease"}
+{"crop_id": "apple", "question": "Какой подвой СК-4 используют для яблони на юге?", "expect_contains_any": ["ск-4", "ск 4", "с к-4"], "category": "rootstock"}
+{"crop_id": "apple", "question": "Как террасирование помогает освоить склоны в КБР?", "expect_contains": ["террас"], "category": "relief"}
+{"crop_id": "apple", "question": "Какая экспозиция склона лучше для урожайности яблони в предгорье?", "expect_contains_any": ["экспозиц", "север", "склон"], "category": "relief"}
+{"crop_id": "apple", "question": "Как оценивают устойчивость сортов яблони к парше?", "expect_contains": ["парша"], "category": "disease"}
+{"crop_id": "apple", "question": "Какие клоновые подвои М9 и СК-2 используют в питомнике яблони?", "expect_contains_any": ["м9", "ск-2"], "category": "rootstock"}
+{"crop_id": "apple", "question": "Как плотность посадки влияет на урожай Айдаред на подвое СК 4?", "expect_contains": ["айдаред"], "category": "planting"}
+{"crop_id": "apple", "question": "Зачем мониторить лист на марссониоз в влажные годы?", "expect_contains_any": ["марссон", "marssonina"], "category": "disease"}
+{"crop_id": "apple", "question": "Какая биологическая эффективность средств против яблонной плодожорки?", "expect_contains": ["плодожорк"], "category": "pest"}
+{"crop_id": "apple", "question": "Чем парша опасна для урожая яблони при хранении?", "expect_contains": ["парша"], "category": "disease"}
+{"crop_id": "apple", "question": "Какие показатели скороплодности изучали у сортов яблони в КБР?", "expect_contains": ["скороплод"], "category": "variety"}
+{"crop_id": "apple", "question": "Чем опасен вирус шарки сливы для плодовых питомников?", "expect_contains_any": ["шарк", "plum pox"], "category": "disease"}
+{"crop_id": "apple", "question": "Зачем некорневые биостимуляторы на основе аминокислот для яблони?", "expect_contains": ["аминокислот"], "category": "fertilizer"}
+{"crop_id": "apple", "question": "Как биологизированные методы повышают фитосанитарную устойчивость яблоневого сада?", "expect_contains": ["фитосанит"], "category": "disease"}

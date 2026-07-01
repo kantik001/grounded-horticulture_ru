@@ -1,0 +1,52 @@
+# Git и локальные артефакты
+.git
+.gitignore
+.github
+.cursor
+.DS_Store
+Thumbs.db
+Info
+
+# Секреты и локальная конфигурация
+.env
+.env.example
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv
+env
+.pytest_cache
+.mypy_cache
+
+# Документация (не нужна в runtime-образах)
+*.md
+!README.md
+docs
+
+# Тесты и eval (в CI/локально; в Docker — volumes или не нужны)
+tests
+eval
+
+# Корпус статей и индексы — только через volumes compose (./data, chroma_data, bm25_data)
+data
+chroma_db
+bm25_db
+hf_cache
+
+# Тяжёлые ML-веса — volume models:
+models/*.pth
+
+# Сборки Go / бинарники
+server/main
+*.exe
+
+# Eval-наборы в git не нужны в образе classifier
+*.jsonl
+eval/results/
+
+# Примечание: scripts/docker_build.sh временно сужает context для каждого образа.
+# Compose 2.17+ поддерживает build.ignore; пока — общий .dockerignore + скрипт для CI.

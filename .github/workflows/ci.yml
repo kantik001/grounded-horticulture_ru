@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main, "feature/**", "fix/**", "feat/**"]
+  pull_request:
+    branches: [master, main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  go-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+          cache-dependency-path: server/go.sum
+
+      - name: Go mod tidy
+        run: go mod tidy
+
+      - name: Go test
+        env:
+          CROPS_CONFIG_PATH: ${{ github.workspace }}/config/crops.json
+        run: go test -v -count=1 ./...
+
+  python-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tests/requirements-test.txt
+
+      - name: Install test dependencies
+        run: pip install -r tests/requirements-test.txt
+
+      - name: Pytest
+        env:
+          CROPS_CONFIG_PATH: config/crops.json
+        run: pytest tests/ -v --tb=short
+
+  docker-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build server image
+        run: |
+          chmod +x scripts/docker_build.sh
+          scripts/docker_build.sh server -t doctor-gardens-server:ci
+
+      - name: Build webapp image
+        run: scripts/docker_build.sh webapp -t doctor-gardens-webapp:ci
+
+      - name: Build classifier image
+        run: scripts/docker_build.sh classifier --build-arg SKIP_HF_BAKE=1 -t doctor-gardens-classifier:ci
+
+      - name: Verify classifier torch and imports
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/config:/config:ro" \
+            -v "${{ github.workspace }}/data:/app/data:ro" \
+            -e CROPS_CONFIG_PATH=/config/crops.json \
+            doctor-gardens-classifier:ci python -c "
+          import torch, torchvision, transformers, sentence_transformers
+          assert torch.__version__.startswith('2.5'), torch.__version__
+          assert not torch.backends.cuda.is_built(), 'expected CPU-only torch build'
+          from rag.vector_store import load_all_documents
+          print('torch', torch.__version__, 'cuda_built', torch.backends.cuda.is_built(), 'docs', len(load_all_documents()))
+          "
+
+  # RAG retrieval eval — только вручную: Actions → RAG Eval → Run workflow
+  # (reindex + embeddings на CPU в PR слишком долгие для каждого push).

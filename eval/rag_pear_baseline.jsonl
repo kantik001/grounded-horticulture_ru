@@ -1,0 +1,8 @@
+{"crop_id": "pear", "question": "Какие сорта и подвои груши дают урожай на Ставрополье?", "expect_contains": ["груш"], "category": "variety"}
+{"crop_id": "pear", "question": "Какова зимостойкость сортов груши на склонах Северного Кавказа?", "expect_contains": ["зимостойк"], "category": "winterhardiness"}
+{"crop_id": "pear", "question": "Каков адаптационный потенциал груши в сложном рельефе КБР?", "expect_contains": ["кбр"], "category": "relief"}
+{"crop_id": "pear", "question": "Как размножают грушу зелёным черенкованием?", "expect_contains": ["черенк"], "category": "nursery"}
+{"crop_id": "pear", "question": "Какова роль маточных деревьев груши и айвы?", "expect_contains": ["айв"], "category": "nursery"}
+{"crop_id": "pear", "question": "Зачем хелатные некорневые подкормки груши?", "expect_contains": ["хелат"], "category": "fertilizer"}
+{"crop_id": "pear", "question": "Как выращивать ананас на Марсе в открытом грунте?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}
+{"crop_id": "pear", "question": "Курс доллара на завтра для садовода?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}

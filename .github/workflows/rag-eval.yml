@@ -1,0 +1,46 @@
+name: RAG Eval
+
+# Полный прогон retrieval eval (reindex + run_rag_eval). Запускайте вручную после
+# смены data/, RAG-кода или перед релизом — не на каждый PR.
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: Eval suite
+        required: true
+        default: apple
+        type: choice
+        options:
+          - apple
+          - pear
+          - plum
+          - demo_hr
+          - all
+
+jobs:
+  rag-eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build classifier image
+        run: |
+          chmod +x scripts/docker_build.sh
+          scripts/docker_build.sh classifier --build-arg SKIP_HF_BAKE=1 -t doctor-gardens-classifier:ci
+
+      - name: Reindex and run RAG eval
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          EVAL_SUITE: ${{ github.event.inputs.suite }}
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/config:/config:ro" \
+            -v "${{ github.workspace }}/data:/app/data:ro" \
+            -v "${{ github.workspace }}/scripts:/app/scripts:ro" \
+            -v "${{ github.workspace }}/eval:/app/eval:ro" \
+            -e CROPS_CONFIG_PATH=/config/crops.json \
+            -e HF_TOKEN="${HF_TOKEN}" \
+            -e RAG_RERANK_ENABLED=false \
+            doctor-gardens-classifier:ci \
+            bash -lc "python scripts/reindex_rag.py && python scripts/run_rag_eval.py --suite ${EVAL_SUITE} --in-process --fast --timeout 300 --workers 2"

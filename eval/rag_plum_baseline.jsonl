@@ -1,0 +1,10 @@
+{"crop_id": "plum", "question": "Какова зимостойкость сортов сливы в предгорье Майкопа?", "expect_contains": ["зимостойк"], "category": "winterhardiness"}
+{"crop_id": "plum", "question": "Как ведёт себя слива Стенлей на подвоях ПК СК?", "expect_contains": ["стенл"], "category": "rootstock"}
+{"crop_id": "plum", "question": "Какой урожай даёт ПолиМикс-Агро на сливе Стенлей?", "expect_contains": ["урож"], "category": "fertilizer"}
+{"crop_id": "plum", "question": "Какая экспозиция склона лучше для сливы на террасах КБР?", "expect_contains": ["склон"], "category": "relief"}
+{"crop_id": "plum", "question": "Что такое вирус шарки сливы и чем он опасен?", "expect_contains": ["шарк"], "category": "disease"}
+{"crop_id": "plum", "question": "Как диагностируют шарку сливы методом ПЦР?", "expect_contains": ["шарк"], "category": "disease"}
+{"crop_id": "plum", "question": "Какие клоновые подвои сливы размножают зелёным черенкованием?", "expect_contains": ["подвой"], "category": "rootstock"}
+{"crop_id": "plum", "question": "Какие адаптивные подвои сливы рекомендуют для юга?", "expect_contains": ["подвой"], "category": "rootstock"}
+{"crop_id": "plum", "question": "Как выращивать ананас на Марсе в открытом грунте?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}
+{"crop_id": "plum", "question": "Курс доллара на завтра для садовода?", "expect_out_of_scope": true, "expect_contains": [], "category": "edge"}
