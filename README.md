@@ -293,11 +293,15 @@ python train_classifier.py
 
 ### Чат (текстовый RAG)
 
-<video src="docs/assets/demo-chat.mp4" controls width="720"></video>
+![Демо чата: вопрос и RAG-ответ](docs/assets/demo-chat.gif)
+
+[Полная запись (MP4)](docs/assets/demo-chat.mp4)
 
 ### Админка (статьи и обратная связь)
 
-<video src="docs/assets/demo-admin.mp4" controls width="720"></video>
+![Демо админки: статьи и оценки ответов](docs/assets/demo-admin.gif)
+
+[Полная запись (MP4)](docs/assets/demo-admin.mp4)
 
 Сценарий записи: [docs/PUBLIC_REPO.md](docs/PUBLIC_REPO.md).
 

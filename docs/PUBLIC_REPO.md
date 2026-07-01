@@ -37,16 +37,24 @@
    - «Какие признаки парши на листьях?»
    - «Какие подвои подходят для интенсивного сада?»
 2. **Админка:** http://localhost/admin.html — логин `ADMIN_USER` / пароль `ADMIN_PASSWORD` из `.env`.
-3. Сохранить записи в `docs/assets/demo-chat.mp4` и `docs/assets/demo-admin.mp4`.
+3. Сохранить записи в `docs/assets/demo-chat.mp4` и `docs/assets/demo-admin.mp4`, для README — GIF (`demo-chat.gif`, `demo-admin.gif`; GitHub не показывает `<video>` в README).
 4. Вставить в README (секция «Демо»).
 
 Перед записью: дождаться healthy у classifier (~1–2 мин после старта), один тестовый вопрос «вхолостую».
 
 ## Публикация
 
+Публичный репозиторий (RU): **https://github.com/kantik001/grounded-horticulture_ru**
+
+Обновление публичного репо (чистая история, без журнального корпуса в прошлых коммитах):
+
 ```bash
-git push -u origin public-portfolio
-# на GitHub: сделать default branch или открыть PR в main
+git checkout public-portfolio
+git checkout --orphan public-release
+git add -A
+git commit -m "Initial public release: grounded-horticulture portfolio."
+git push public-ru public-release:main --force
+git checkout public-portfolio
 ```
 
 Перед push: убедитесь, что `.env` никогда не коммитился (`git log -- .env`).
